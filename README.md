@@ -8,7 +8,8 @@
 
 Результат:
 
-![image](https://github.com/user-attachments/assets/3c18a815-188f-44a5-a43a-d20b47d6c45b)
+![image](https://github.com/user-attachments/assets/c6e23a8a-aeba-4202-b360-ae1716902454)
+
 
 
 Мини-игра №2: «Генератор историй» (Работа с файлами)
