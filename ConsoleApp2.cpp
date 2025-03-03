@@ -1,22 +1,22 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 
-//  генератор случайных чисел
+// Генератор случайных чисел
 void initRandom() {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
-// генератор случайного элемента из вектора
+// Генератор случайного элемента из вектора
 std::string getRandomElement(const std::vector<std::string>& vec) {
     int index = std::rand() % vec.size();
     return vec[index];
 }
 
-// генератор истории
+// Генератор истории
 std::string generateStory(const std::vector<std::string>& heroes,
     const std::vector<std::string>& places,
     const std::vector<std::string>& actions,
@@ -25,9 +25,8 @@ std::string generateStory(const std::vector<std::string>& heroes,
         getRandomElement(actions) + " " + getRandomElement(details) + ".";
 }
 
-//сохранение истории в файл
+// Сохранение истории в файл
 void saveStory(const std::string& story) {
-    setlocale(LC_ALL, "RU");  //Установка кодировку на RU
     std::ofstream outFile("stories.txt", std::ios::app);
     if (outFile.is_open()) {
         outFile << story << "\n";
@@ -39,15 +38,37 @@ void saveStory(const std::string& story) {
     }
 }
 
-// главная функция
+// Сохранение прогресса (количество историй)
+void saveProgress(int storyCount) {
+    std::ofstream progressFile("progress.txt");
+    if (progressFile.is_open()) {
+        progressFile << storyCount;
+        progressFile.close();
+    }
+}
+
+// Загрузка прогресса (количество историй)
+int loadProgress() {
+    std::ifstream progressFile("progress.txt");
+    int storyCount = 0;
+    if (progressFile.is_open()) {
+        progressFile >> storyCount;
+        progressFile.close();
+    }
+    return storyCount;
+}
+
 int main() {
-    setlocale(LC_ALL, "RU"); //Установка кодировку на RU
+    setlocale(LC_ALL, "RU");
     initRandom();
-    //перечень слов
+
     std::vector<std::string> heroes = { "Смелый рыцарь", "Хитрый вор", "Волшебник", "Отважный пират", "Дерзкий исследователь" };
     std::vector<std::string> places = { "в далёком королевстве", "на заброшенной фабрике", "в густом лесу", "на просторах космоса", "у подножия гор" };
     std::vector<std::string> actions = { "победил дракона", "обнаружил сокровища", "выиграл битву", "устроил бал", "раскрыл древнюю тайну" };
     std::vector<std::string> details = { "с волшебным мечом", "на летающем ковре", "под звуки волшебной музыки", "с удивительной силой", "в сопровождении магического существа" };
+
+    int storyCount = loadProgress();
+    std::cout << "Вы ранее создали " << storyCount << " историй.\n";
 
     char playAgain;
     do {
@@ -57,14 +78,16 @@ int main() {
         std::cout << "\nСохранить историю в файл (Y/N)? ";
         char saveChoice;
         std::cin >> saveChoice;
-        if (saveChoice == 'Y' || saveChoice == 'y') { //Если нажмет Y то сохранится история в файл
+        if (saveChoice == 'Y' || saveChoice == 'y') {
             saveStory(story);
+            storyCount++;
+            saveProgress(storyCount);
         }
 
         std::cout << "\nХотите создать ещё одну историю? (Y/N): ";
         std::cin >> playAgain;
     } while (playAgain == 'Y' || playAgain == 'y');
 
-    std::cout << "Спасибо за игру!" << std::endl;
+    std::cout << "Спасибо за игру! Вы создали всего " << storyCount << " историй.\n";
     return 0;
 }
