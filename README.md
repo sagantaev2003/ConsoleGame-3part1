@@ -19,11 +19,22 @@
 
 Результат: 
 
-![image](https://github.com/user-attachments/assets/7b0fd750-9b37-4a56-9473-dbf9a622b8aa)
+![image](https://github.com/user-attachments/assets/5c57c236-debe-4870-bfac-d864e6ef4f23)
 
-![image](https://github.com/user-attachments/assets/9e8a5458-0abb-4419-821a-25c1ef0f2e09)
 
-![image](https://github.com/user-attachments/assets/4683727f-c025-4335-9fa8-c2b1dab016a9)
+![image](https://github.com/user-attachments/assets/5d213a59-960d-4986-bd4b-e3fb605b47b1)
+
+![image](https://github.com/user-attachments/assets/be669ca3-6221-4807-a46d-665c14fd42f0)
+
+![image](https://github.com/user-attachments/assets/5b6515ea-cb95-4531-84f7-a2c68c1c044c)
+
+**Перезапуск**
+
+![image](https://github.com/user-attachments/assets/34f9151d-7585-42bf-9d05-5793c67bd088)
+
+![image](https://github.com/user-attachments/assets/1b8ea82a-7270-41ba-a79f-73ce7886babf)
+
+
 
 
 
