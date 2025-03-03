@@ -1,19 +1,20 @@
-﻿#include <iostream>
+#include <iostream>
 #include <random>
 
 void playGame() { //Функция для одной игры
     setlocale(LC_ALL, "RU"); //Установка кодировку на RU
     //Генератор случайных чисел
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(1, 100);
+    std::random_device rd; 
+    std::mt19937 gen(rd());  
+    std::uniform_int_distribution<> distrib(1, 100); //диапазон случайных чисел от 1 до 100
     int secretNumber = distrib(gen);
-    int guess;
-    int attempts = 0;
+    int guess; //переменная для хранения числа, введенного пользователем
+    int attempts = 0; // счётчик попыток
 
     std::cout << "Я загадал число от 1 до 100. Попробуйте угадать!  " << "Подсказка: " << secretNumber << std::endl;
 
-    while (true) { //Проверка на некорректность ввода числа
+    while (true) { //цикл будет идти бесконечно пока число не будет угадано 
+        //Проверка на корректность ввода числа
         std::cout << "Введите число: ";
         if (!(std::cin >> guess)) {
             std::cin.clear(); //Сброс флага ошибки
@@ -37,7 +38,7 @@ void playGame() { //Функция для одной игры
         }
     }
 }
-
+//главная функция программы
 int main() { // Проверяет хочет ли пользователь сыграть еще раз
     char playAgain;
     do {
